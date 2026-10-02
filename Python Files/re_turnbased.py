@@ -126,28 +126,28 @@ enemy_pool = [
     {
         "name": "Zombie",
         "hp": 40,
-        "damage": 6,
+        "damage": [1, 6],
         "xp": 25
     },
 
     {
         "name": "Crawler",
         "hp": 60,
-        "damage": 10,
+        "damage": [5, 10],
         "xp": 50
     },
 
     {
         "name": "Hunter",
         "hp": 120,
-        "damage": 18,
+        "damage": [10, 15],
         "xp": 100
     },
 
     {
         "name": "Licker",
         "hp": 150,
-        "damage": 22,
+        "damage": [15, 25],
         "xp": 150
     }
 ]
@@ -155,7 +155,7 @@ enemy_pool = [
 boss = {
     "name": "NEMESIS-X",
     "hp": 500,
-    "damage": 30,
+    "damage": [30, 40],
     "xp": 1000
 }
 
@@ -282,7 +282,7 @@ def spawn_enemy():
 
         enemy["name"] = "Elite " + enemy["name"]
         enemy["hp"] *= 2
-        enemy["damage"] += 10
+        enemy["damage"][0] += 10
         enemy["xp"] *= 2
 
         log("ELITE ENEMY!")
@@ -320,9 +320,20 @@ def enemy_attack():
 
             return
 
+    if isinstance(enemy["damage"], list):
+
+        base_damage = random.randint(
+            enemy["damage"][0],
+            enemy["damage"][1]
+        )
+
+    else:
+
+        base_damage = enemy["damage"]
+
     damage = max(
         1,
-        enemy["damage"] - player["armor"]
+        base_damage - player["armor"]
     )
 
     player["hp"] -= damage
