@@ -9,6 +9,29 @@ bryan = {
     "package": "a medical delivery",
 }
 
+
+# A class is a recipe for making character objects.
+class Character:
+    def __init__(self, name, job, destination, package):
+        # These values are strings. self.name and the others are attributes.
+        self.name = name
+        self.job = job
+        self.destination = destination
+        self.package = package
+
+    def delivery_intro(self):
+        # A method is an action the character object can perform.
+        return f"{self.name} is a {self.job}. He has {self.package}."
+
+
+# Make one Character object using the same details as the dictionary.
+bryan_character = Character(
+    bryan["name"],
+    bryan["job"],
+    bryan["destination"],
+    bryan["package"],
+)
+
 print("BRYAN'S VERY BAD DELIVERY SHIFT: DICTIONARY TRAINING")
 print("Try each challenge before Python reveals the result.\n")
 
@@ -58,11 +81,37 @@ bryan[my_key] = my_value
 print(f"Using the string key '{my_key}' finds this value: {bryan[my_key]}")
 print("Why it works: your input strings become a key and value in the dictionary. The key lets Python find its matching value.\n")
 
+# The dictionary section used strings like "job" as keys. Now compare that
+# with attributes on a Character object.
+print("NOW BRYAN GETS AN OBJECT")
+print("The Character class is a recipe. bryan_character is one character made from that recipe.")
+print("The object's name, job, destination, and package are attributes.\n")
+
+# CHALLENGE 7: Predict the value of an object attribute.
+print("CHALLENGE 7: Read Bryan's character badge")
+input("Predict what bryan_character.job will show: ")
+print(f"Python returns: {bryan_character.job}")
+print("Why it works: the dot and name job select the job attribute on this Character object. Its value is a string.\n")
+
+# CHALLENGE 8: Compare a string dictionary key with an object attribute.
+print("CHALLENGE 8: Same information, two ways")
+input('Predict whether bryan.get("job") and bryan_character.job show the same information: ')
+print(f"Dictionary lookup: {bryan.get('job')}")
+print(f"Object attribute:  {bryan_character.job}")
+print('Why it works: "job" is a string key inside the dictionary. job after the dot is an attribute name in the code. Both hold the same text here.\n')
+
+# CHALLENGE 9: Call a method on the character object.
+print("CHALLENGE 9: Ask Bryan for his delivery introduction")
+input("Predict what bryan_character.delivery_intro() will say: ")
+print(f"Bryan says: {bryan_character.delivery_intro()}")
+print("Why it works: delivery_intro is a method, a named action written inside the Character class. It uses this object's string attributes to make a sentence.\n")
+
 print("WHAT DID YOU LEARN? Answer these out loud or in a notebook:")
 print('1. In bryan["job"], which part is the key?')
 print("2. What does .get() return when the key is missing and you give it a backup value?")
 print("3. If detail_key changes from 'job' to 'destination', what changes in the lookup?")
 print("4. What does this line add to a dictionary: bryan['delivery_status'] = 'very late' ?\n")
+print("5. In bryan_character.job, what is the object's attribute, and how is that different from bryan['job']?\n")
 
 print("BRYAN'S VERY BAD DELIVERY SHIFT: MAD LIBS")
 
@@ -76,11 +125,11 @@ mad_lib = {
 
 # These story parts are strings. F-strings insert dictionary values into them.
 opening_scene = [
-    f"{bryan['name']} has a girlfriend named Michelle.",
+    f"{bryan_character.name} has a girlfriend named Michelle.",
     "They have a big conversation to finish.",
     "Bryan is not ready to be a dad. The night has scheduled other topics.",
-    f"{bryan['name']} is a {bryan['job']}. He has {bryan['package']}.",
-    f"The package needs to go to {bryan['destination']}.",
+    bryan_character.delivery_intro(),
+    f"The package needs to go to {bryan_character.destination}.",
     "It is snowing. This is not the main problem.",
     "The main problem is that Raccoon City is having a terrible night.",
     f"Bryan nearly hits a sick woman. She makes a {mad_lib['adjective']} sound: {mad_lib['sound']}!",
