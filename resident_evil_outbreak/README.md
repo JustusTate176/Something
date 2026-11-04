@@ -1,17 +1,13 @@
-# Resident Evil: Outbreak
+# Game package
 
-Run the game from the project root with:
+The complete run, control, combat, save, and build instructions are in the repository [README](../README.md).
 
-```powershell
-python re_tb.py
-```
+## Modules
 
-The game is organized into modules:
-
-- `main.py` starts Pygame and handles input.
-- `state.py` stores the current run state.
-- `data.py` contains rooms, weapons, enemies, events, and loot.
+- `main.py` initializes Pygame and handles keyboard input.
+- `state.py` stores the current run state, including per-room search usage and combat animations.
+- `data.py` contains rooms, weapons, enemy templates, events, and loot.
 - `enemy.py` defines the `Enemy` class.
-- `combat.py` handles enemy spawning and combat.
-- `systems.py` handles logging, leveling, healing, and save files.
-- `rendering.py` draws the game screens.
+- `combat.py` handles regular and search-triggered enemy encounters, attack choices, and combat rewards.
+- `systems.py` handles logging, leveling, healing, and save/load.
+- `rendering.py` draws the screens and brief attack effects.
