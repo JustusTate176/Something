@@ -1,6 +1,6 @@
 # Stand Battle Simulator --- Changelog
 
-## Development Period: November 4--18, 2026
+## Development Period: November 4--19, 2026
 
 ### Added
 

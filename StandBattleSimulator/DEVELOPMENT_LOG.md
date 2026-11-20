@@ -5,7 +5,7 @@
 **Project:** Stand Battle Simulator\
 **Language:** Python\
 **Testing:** pytest\
-**Development period:** November 4--18, 2026\
+**Development period:** November 4--19, 2026\
 **Current focus:** Turn-based battle engine, Stand abilities, cooldowns,
 and test-driven development
 
